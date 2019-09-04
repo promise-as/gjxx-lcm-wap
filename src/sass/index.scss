@@ -1,0 +1,536 @@
+$txt-color: #ff7f00;
+$bg-color: #f7f7f7;
+$browser-default-font-size: 75px !default;
+;
+@function pr($px) {
+  @return $px / $browser-default-font-size * 1rem;
+}
+
+$padding-size: pr(20px);
+
+input[type="text"],
+select {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none; // 去除safari浏览器的内阴影
+  &::-webkit-input-placeholder {
+    color: #888;
+    font-size: inherit;
+  }
+  &:-moz-placeholder {
+    color: #888;
+    font-size: inherit;
+  }
+  &::-moz-placeholder {
+    color: #888;
+    font-size: inherit;
+  }
+  &:-ms-input-placeholder {
+    color: #888;
+    font-size: inherit;
+  }
+}
+
+input[type="submit"] {
+  cursor: pointer;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+input, textarea, select {
+  background-color: transparent;
+  font-family: '微软雅黑';
+}
+
+select {
+  border: none;
+}
+
+option {
+  text-indent: 1em;
+  font-family: '微软雅黑';
+}
+
+input[type='text'] {
+  border: none;
+  text-indent: 1em;
+}
+
+%one {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+%in-b {
+  display: inline-block;
+  *zoom: 1;
+  *display: inline;
+}
+
+%clearfix {
+  zoom: 1;
+  &:after {
+    clear: both;
+  }
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+}
+
+.wrap {
+  width: pr(750px);
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+body, div, a, p, span, ul, li, input {
+  box-sizing: border-box;
+}
+
+/* 标题模板 */
+.title-module{
+  font-size: pr(34px);
+  font-weight: bold;
+  height: pr(94px);
+  line-height: pr(94px);
+  color: #444444;
+  text-align: center;
+  border-bottom: 2px solid #eeeeee;
+  box-sizing: border-box;
+  span{
+    @extend %in-b;
+    height: pr(94px);
+    line-height: pr(94px);
+    border-bottom: pr(2px) solid #ff7f00;
+    box-sizing: border-box;
+
+  }
+  .icon{
+    @extend %in-b;
+    width: pr(20px);
+    height: pr(19px);
+  }
+
+  .left-icon{
+    background: url("../images/title-left_1.png") no-repeat;
+    margin-right: pr(9px);
+    background-size: 100% 100%;
+  }
+  .right-icon{
+    background: url("../images/title-right_1.png") no-repeat;
+    margin-left: pr(9px);
+    background-size: 100% 100%;
+  }
+}
+
+/* 按钮模板 */
+.btn-module{
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  a{
+    width: pr(332px);
+    height: pr(60px);
+    line-height: pr(60px);
+    border-radius: pr(4px);
+    font-size: pr(24px);
+    color: #ffffff;
+    text-align: center;
+    &:first-child{
+      margin-right: pr(17px);
+      background-image: linear-gradient(-22deg,
+          #ff7f00 0%,
+          #ff9865 100%);
+    }
+    &:nth-of-type(2){
+      background-image: linear-gradient(-22deg,
+          #266ed1 0%,
+          #518ee2 100%);
+    }
+    &.has-before{
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      &:before{
+        @extend %in-b;
+        content: '';
+        width: pr(26px);
+        height: pr(24px);
+        background: url("../images/icon_1.png") no-repeat;
+        background-size: 100% 100%;
+      }
+    }
+  }
+}
+
+/* 招生简章 */
+.recruit{
+  padding: 0 pr(28px);
+  /* 课程 */
+  .courses{
+    li{
+      @extend %clearfix;
+      padding-top: pr(30px);
+      margin-bottom: pr(10px);
+    }
+    .course-bg{
+      width: pr(310px);
+      height: pr(214px);
+      float: left;
+      margin-right: pr(26px);
+    }
+    .detail{
+      float: left;
+      width: pr(341px);
+      .detail-title{
+        @extend %in-b;
+        font-weight: bold;
+        color: #444444;
+        font-size: pr(28px);
+        line-height: pr(46px);
+        &:hover{
+          color: $txt-color;
+        }
+      }
+      .text{
+        color: #666666;
+        font-size: pr(24px);
+        line-height: pr(36px);
+
+        overflow:hidden;
+        text-overflow:ellipsis;
+        display:-webkit-box;
+        -webkit-box-orient:vertical;
+        -webkit-line-clamp:3;
+      }
+    }
+    .btn-module{
+      clear: both;
+    }
+  }
+  /* 学校 */
+  .schools{
+    padding-top: pr(50px);
+    margin-bottom: pr(30px);
+    ul{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-column-gap: pr(23px);
+      grid-row-gap: pr(23px);
+    }
+    li{
+      //width: pr(347px);
+      background-color: #ffffff;
+      border-radius: pr(4px);
+      border: solid 1px #e6e6e6;
+      padding-bottom: pr(30px);
+      box-sizing: border-box;
+      text-align: center;
+      .school-bg{
+        width: 100%;
+        height: pr(101px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img{
+          width: pr(253px);
+          height: pr(65px);
+        }
+      }
+      .school-title{
+        height: pr(51px);
+        line-height: pr(50px);
+        background-color: #89b1e9;
+        color: #ffffff;
+        font-size: pr(26px);
+      }
+      .detail{
+        padding: pr(20px) pr(24px) 0;
+        p{
+          text-align: left;
+          font-size: pr(26px);
+          line-height: pr(36px);
+          color: #333333;
+          span{
+            color: #666666;
+          }
+        }
+      }
+      .btn-module{
+        //padding-left: pr(17px);
+        a{
+          width: pr(152px);
+          height: pr(49px);
+          line-height: pr(49px);
+          span{
+            height: pr(49px);
+            line-height: pr(49px);
+            font-size: pr(22px);
+          }
+          &:nth-of-type(2){
+            background-image: none;
+            span{
+              color: $txt-color;
+              border-bottom: 1px solid $txt-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* 热门机构推荐 */
+.hot-organs{
+  background-color: #f7f7f7;
+  padding: pr(20px) pr(20px);
+  box-sizing: border-box;
+  text-align: center;
+  margin-bottom: pr(70px);
+  .title-module{
+    border-bottom: 0;
+    margin-bottom: pr(20px);
+    span{
+      border-bottom: 0;
+    }
+    .icon{
+      width: pr(79px);
+      height: pr(15px);
+      background-size: 100% 100%;
+    }
+    .left-icon{
+      background: url("../images/title-left_2.png") no-repeat;
+    }
+    .right-icon{
+      background: url("../images/title-right_2.png") no-repeat;
+    }
+  }
+  .organ{
+    width: pr(708px);
+    height: pr(539px);
+    background-color: #ffffff;
+    border-radius: pr(9px);
+    .organ-l{
+      padding-top: pr(32px);
+      border-bottom: pr(4px) solid #f7f7f7;
+      box-sizing: border-box;
+      text-align: center;
+      @extend %clearfix;
+      .promote{
+        width: pr(264px);
+        height: pr(67px);
+        margin-left: pr(-7px);
+        float: left;
+        margin-bottom: pr(13px);
+      }
+      .organ-l-bg{
+        width: pr(179px);
+        height: pr(67px);
+        float: left;
+        border-right: 1px solid #dfdfdf;
+        margin-right: pr(13px);
+        margin-bottom: pr(15px);
+      }
+      .l-detail{
+        float: right;
+        .l-title{
+          color: #444444;
+
+          //width: pr(250px);
+          text-align: left;
+
+          font-size: pr(26px);
+          line-height: pr(26px);
+        }
+        .praise{
+          padding-top: pr(7px);
+          .icon{
+            @extend %in-b;
+            width: pr(17px);
+            height: pr(19px);
+            background: url("../images/icon_3.png") no-repeat;
+            background-size: 100% 100%;
+          }
+          p{
+            float: left;
+            font-size: pr(22px);
+            line-height: pr(22px);
+            color: #ff8d4e;
+            margin-right: pr(15px);
+          }
+        }
+      }
+    }
+    .organ-r{
+      padding-top: pr(22px);
+      padding-left: pr(17px);
+      padding-right: pr(17px);
+      box-sizing: border-box;
+      text-align: center;
+      .r-feature{
+        text-align: left;
+        span{
+          @extend %in-b;
+          background-color: #ffffff;
+          border: solid 1px #ff7f00;
+          font-size: pr(24px);
+          color: #ff7f00;
+          margin-right: pr(15px);
+          text-align: center;
+
+          width: pr(145px);
+          height: pr(48px);
+          line-height: pr(48px);
+          border-radius: pr(24px);
+        }
+
+      }
+      .detail{
+        li{
+          color: #666666;
+          text-align: left;
+          padding-top: 22px;
+          @extend %clearfix;
+
+          font-size: pr(24px);
+          line-height: pr(31px);
+          &:before{
+            @extend %in-b;
+            content: '';
+            width: pr(14px);
+            height: pr(14px);
+            border: solid pr(2px) #ff7f00;
+            box-sizing: border-box;
+            border-radius: 100%;
+            margin-right: pr(5px);
+            float: left;
+            margin-top: pr(8px);
+          }
+          span{
+            @extend %in-b;
+            float: left;
+            width: pr(648px);
+          }
+        }
+      }
+      .btn-module{
+        display: flex;
+        justify-content: center;
+        a{
+          background-image: none;
+          background-color: #f7f7f7;
+          color: $txt-color;
+          height: pr(56px);
+          line-height: pr(56px);
+          box-shadow: inset 0px pr(8px) pr(21px) pr(6px)
+          rgba(255, 244, 229, 0.35);
+          border-radius: pr(4px);
+          font-size: pr(22px);
+          span{
+            border-bottom: 1px solid $txt-color;
+            line-height: pr(24px);
+          }
+          &:first-child{
+            width: pr(214px);
+            &:before{
+              width: pr(22px);
+              height: pr(24px);
+              background: url("../images/icon_4.png") no-repeat;
+              margin-right: pr(10px);
+            }
+          }
+          &:nth-of-type(2){
+            width: pr(175px);
+            &:before{
+              width: pr(22px);
+              height: pr(24px);
+              background: url("../images/icon_5.png") no-repeat;
+              margin-right: pr(10px);
+            }
+          }
+        }
+      }
+    }
+  }
+  .organ-btn{
+    line-height: pr(72px);
+    background-image: linear-gradient(-22deg,
+        #ff7f00 0%,
+        #ff9865 100%);
+    font-size: pr(26px);
+    color: #ffffff;
+    width: pr(340px);
+    height: pr(72px);
+    box-shadow: 0px pr(2px) pr(8px) 0px
+    rgba(255, 127, 0, 0.3);
+    border-radius: pr(36px);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: pr(33px);
+    &:before{
+      @extend %in-b;
+      content: '';
+      width: pr(26px);
+      height: pr(25px);
+      background: url("../images/icon_6.png") no-repeat;
+      background-size: 100% 100%;
+      margin-right: pr(8px);
+    }
+  }
+}
+
+/* 预约看校 */
+.appoint{
+  height: pr(165px);
+  background-color: #ffffff;
+  border: solid 1px #e6e6e6;
+  padding: pr(20px);
+  box-sizing: border-box;
+  margin-bottom: pr(20px);
+  @extend %clearfix;
+  .appoint-school{
+    border-right: 1px dashed #808080;
+    float: left;
+    padding-right: pr(40px);
+    margin-right: pr(29px);
+    img{
+      width: pr(209px);
+      height: pr(79px);
+    }
+    .appoint-btn{
+      display: block;
+      margin: 0 auto;
+      line-height: pr(44px);
+      background-image: linear-gradient(-22deg,
+          #ff7f00 0%,
+          #ff9865 100%);
+      font-size: pr(24px);
+      color: #ffffff;
+      text-align: center;
+
+      width: pr(195px);
+      height: pr(44px);
+      border-radius: pr(22px);
+    }
+  }
+  .detail{
+    float: left;
+    width: pr(416px);
+    .detail-title{
+      font-size: pr(28px);
+      line-height: pr(30px);
+      color: #333333;
+    }
+    p{
+      font-size: pr(24px);
+      line-height: pr(46px);
+      color: #777777;
+    }
+  }
+
+}
